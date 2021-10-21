@@ -1,0 +1,33 @@
+GET http://localhost:8585/operations/time
+
+###
+
+GET localhost:8585/operations/qr/sprinfIsAwesome
+
+###
+POST localhost:8585/operations/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="testFile"; filename="file.txt"
+
+< ./FunctionsApplication.java
+--WebAppBoundary--
+###
+POST localhost:8585/operations/user-info
+Content-Type: application/json
+Authorization: Basic admin admin
+
+{
+  "username": "john@do.com"
+}
+
+###
+POST http://localhost:8585/operations/functionRouter
+Content-Type: application/json
+Authorization: Authorization: Basic admin admin
+spring.cloud.function.definition: user-info
+
+{
+  "username": "john@do.com"
+}

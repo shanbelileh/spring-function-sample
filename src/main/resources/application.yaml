@@ -1,0 +1,14 @@
+server:
+  port: 8585
+
+
+spring:
+  cloud:
+    function:
+      routing:
+        enabled: true # false for using our custom routing function
+      scan:
+        packages: com.example.functions.operations
+      web:
+        path: /operations # context path for function url
+
